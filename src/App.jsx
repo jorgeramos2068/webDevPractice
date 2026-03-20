@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom'
-import Home from './pages/Home'
-import Steam from './pages/Steam'
-import './App.css'
+import { Routes, Route, HashRouter } from 'react-router-dom';
+import Home from './pages/Home';
+import Steam from './pages/Steam';
+import './App.css';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Route path="/steam" element={<Steam />} />
       </Routes>
     </HashRouter>
-  )
+  );
 }
 
-export default App
+export default App;

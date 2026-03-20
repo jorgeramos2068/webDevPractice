@@ -1,188 +1,127 @@
-import { Link } from 'react-router-dom'
-import './Steam.css'
+import { Link } from 'react-router-dom';
+import './Steam.css';
 
 export default function Steam() {
-  const gameInfo = {
-    price: '$49.99',
-    reviews: '98% Positive',
-    totalReviews: '15.2K Reviews',
-    platform: 'Windows, macOS, Linux',
-    release: '2025'
-  }
+  const skyboundAsset = fileName => `${import.meta.env.BASE_URL}assets/skybound/${fileName}`;
+  const tags = ['Open World', 'Action RPG', 'Airship Combat', 'Adventure', 'Story Rich', 'Fantasy'];
 
-  const features = [
-    'Single-player Campaign',
-    'Multiplayer Co-op',
-    'Competitive PvP Modes',
-    'NFT Character Trading',
-    'Cross-platform Play',
-    'Regular Content Updates'
-  ]
-
-  const screenshots = [1, 2, 3, 4, 5, 6, 7, 8]
-  const videos = [1, 2]
+  const screenshots = [
+    skyboundAsset('world-peak.jpg'),
+    skyboundAsset('hero-crest.jpg'),
+    skyboundAsset('world-mystic.jpg'),
+    skyboundAsset('world-airship.jpg'),
+  ];
 
   return (
-    <div className="steam-page">
-      {/* Steam Header */}
-      <header className="steam-header">
-        <Link to="/" className="steam-logo">NEXUS: Chronicles</Link>
-        <Link to="/" className="back-btn">← Back to Official Site</Link>
+    <div className="steam-route-page">
+      <header className="steam-route-header">
+        <div className="steam-route-shell">
+          <h1>STEAM STORE</h1>
+          <Link to="/" className="steam-route-back">
+            Back To Official Site
+          </Link>
+        </div>
       </header>
 
-      {/* Game Hero */}
-      <section className="steam-hero">
-        <div className="steam-hero-content">
-          <h1>NEXUS: Chronicles</h1>
-          <div className="steam-rating">
-            <span className="stars">★★★★★</span>
-            <span className="reviews">{gameInfo.reviews} ({gameInfo.totalReviews})</span>
+      <main className="steam-route-main">
+        <section className="steam-game-hero">
+          <img src={skyboundAsset('world-ruins.jpg')} alt="Skybound Drifters key art with floating ruins" />
+          <div className="steam-game-hero-overlay">
+            <p>Now Available</p>
+            <h2>Skybound Drifters</h2>
+            <span>Ancient skies. Dangerous currents. One ship against the abyss.</span>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Game Info Panel */}
-      <section className="steam-container">
-        <div className="game-info-panel">
-          {/* Left Column */}
-          <div className="game-main">
-            <div className="tabs-section">
-              <button className="tab active">Overview</button>
-              <button className="tab">Reviews</button>
-              <button className="tab">Screenshots</button>
-              <button className="tab">Community</button>
+        <section className="steam-columns">
+          <article className="steam-left">
+            <h3>About This Game</h3>
+            <p>
+              Command The Gale Serpent, a battle-worn skyship navigating the fractured heavens. Recover lost Aeralith
+              relics, secure alliances with sky tribes, and stop marauders from collapsing the floating world into ruin.
+            </p>
+
+            <div className="steam-tag-list">
+              {tags.map(tag => (
+                <span key={tag}>{tag}</span>
+              ))}
             </div>
 
-            {/* Description */}
-            <div className="game-description">
-              <h2>About This Game</h2>
-              <p>
-                Welcome to NEXUS: Chronicles, a revolutionary cyberpunk RPG that will transport you to a neon-soaked 
-                world of endless possibilities. In a future where the line between reality and the digital realm has 
-                blurred, you are humanity's last hope.
-              </p>
-              <p>
-                Engage in thrilling battles across futuristic environments, forge alliances with unforgettable characters, 
-                and uncover the mysteries that threaten to consume both worlds. Your choices matter, and every decision 
-                will shape the fate of the NEXUS.
-              </p>
+            <h4>Screenshots</h4>
+            <div className="steam-shot-grid">
+              {screenshots.map((src, index) => (
+                <figure key={src}>
+                  <img src={src} alt={`Skybound Drifters screenshot ${index + 1}`} />
+                </figure>
+              ))}
+            </div>
 
-              {/* Features List */}
-              <h3>Key Features:</h3>
-              <ul className="features-list">
-                {features.map((feature, i) => (
-                  <li key={i}>✓ {feature}</li>
-                ))}
-              </ul>
-
-              {/* Requirements */}
-              <div className="requirements">
-                <h3>System Requirements</h3>
-                <div className="requirements-grid">
-                  <div className="requirement-section">
-                    <h4>MINIMUM:</h4>
-                    <ul>
-                      <li>OS: Windows 10 64-bit</li>
-                      <li>Processor: Intel i5-8400</li>
-                      <li>Memory: 8 GB RAM</li>
-                      <li>Graphics: GTX 1660</li>
-                      <li>Storage: 80 GB</li>
-                    </ul>
-                  </div>
-                  <div className="requirement-section">
-                    <h4>RECOMMENDED:</h4>
-                    <ul>
-                      <li>OS: Windows 10/11 64-bit</li>
-                      <li>Processor: Intel i7-10700K</li>
-                      <li>Memory: 16 GB RAM</li>
-                      <li>Graphics: RTX 3080</li>
-                      <li>Storage: 100 GB SSD</li>
-                    </ul>
-                  </div>
-                </div>
+            <h4>System Requirements</h4>
+            <div className="steam-req-grid">
+              <div>
+                <h5>Minimum</h5>
+                <ul>
+                  <li>OS: Windows 10 64-bit</li>
+                  <li>CPU: Intel Core i5-9600K</li>
+                  <li>RAM: 12 GB</li>
+                  <li>GPU: GTX 1660 Ti</li>
+                  <li>Storage: 55 GB</li>
+                </ul>
+              </div>
+              <div>
+                <h5>Recommended</h5>
+                <ul>
+                  <li>OS: Windows 11 64-bit</li>
+                  <li>CPU: Intel Core i7-12700K</li>
+                  <li>RAM: 16 GB</li>
+                  <li>GPU: RTX 3070</li>
+                  <li>Storage: 55 GB SSD</li>
+                </ul>
               </div>
             </div>
+          </article>
 
-            {/* Screenshots */}
-            <div className="screenshots-section">
-              <h3>Screenshots</h3>
-              <div className="screenshots-grid">
-                {screenshots.map((num) => (
-                  <div key={num} className="screenshot">
-                    <div className="screenshot-placeholder">Screenshot {num}</div>
-                  </div>
-                ))}
+          <aside className="steam-right">
+            <div className="purchase-panel">
+              <img src={skyboundAsset('steam-poster.jpg')} alt="Skyship silhouette in the sky" />
+              <div className="purchase-copy">
+                <p>Skybound Drifters</p>
+                <span>Base Game</span>
+              </div>
+              <div className="price-row">
+                <strong>$39.99</strong>
+                <button type="button">Add to Cart</button>
               </div>
             </div>
 
-            {/* Videos */}
-            <div className="videos-section">
-              <h3>Videos</h3>
-              <div className="videos-grid">
-                {videos.map((num) => (
-                  <div key={num} className="video">
-                    <div className="video-placeholder">
-                      <span>▶ Video {num}</span>
-                    </div>
-                  </div>
-                ))}
+            <div className="meta-panel">
+              <div className="meta-item">
+                <span>Release Date</span>
+                <strong>March 19, 2026</strong>
               </div>
-            </div>
-          </div>
-
-          {/* Right Sidebar */}
-          <aside className="game-sidebar">
-            <div className="purchase-box">
-              <div className="game-poster">
-                <div className="poster-placeholder">GAME POSTER</div>
+              <div className="meta-item">
+                <span>Developer</span>
+                <strong>Aeralith Forge Studio</strong>
               </div>
-              <div className="price-section">
-                <span className="price">{gameInfo.price}</span>
-                <button className="btn-buy">Add to Cart</button>
-                <button className="btn-wishlist">♡ Add to Wishlist</button>
+              <div className="meta-item">
+                <span>Reviews</span>
+                <strong>Very Positive (94%)</strong>
               </div>
-              <div className="info-box">
-                <div className="info-item">
-                  <span>Release Date:</span>
-                  <strong>{gameInfo.release}</strong>
-                </div>
-                <div className="info-item">
-                  <span>Platform:</span>
-                  <strong>{gameInfo.platform}</strong>
-                </div>
+              <div className="meta-item">
+                <span>Languages</span>
+                <strong>EN, ES, FR, JP, DE</strong>
               </div>
-            </div>
-
-            {/* Stats */}
-            <div className="stats-box">
-              <h4>Game Stats</h4>
-              <div className="stat">
-                <span>Players Online</span>
-                <strong>127.4K</strong>
-              </div>
-              <div className="stat">
-                <span>Peak Players</span>
-                <strong>486.2K</strong>
-              </div>
-              <div className="stat">
-                <span>Achievements</span>
-                <strong>156</strong>
-              </div>
-            </div>
-
-            {/* Languages */}
-            <div className="languages-box">
-              <h4>Languages Supported</h4>
-              <p>English, Spanish, French, German, Italian, Japanese, Chinese, Russian, and more.</p>
             </div>
           </aside>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="steam-footer">
-        <p>© 2026 NEXUS Entertainment. All rights reserved. Steam is a trademark of Valve Corporation.</p>
+      <footer className="steam-route-footer">
+        <p>
+          2026 Aeralith Forge Studio. Steam and the Steam logo are trademarks and/or registered trademarks of Valve
+          Corporation.
+        </p>
       </footer>
     </div>
-  )
+  );
 }
