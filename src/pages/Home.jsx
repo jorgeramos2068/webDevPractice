@@ -157,6 +157,12 @@ export default function Home() {
             <p className="apex-badge">Apex Transmission</p>
             <h2>Apex Systems rules</h2>
             <p className="apex-main-line">The MDC team is the best in the Universe.</p>
+            <div className="apex-cumbia-stage" aria-label="Animated dancing cumbia character">
+              <span className="apex-cumbia-character" role="img" aria-label="dancing cumbia character">
+                🕺
+              </span>
+              <span className="apex-cumbia-shadow" aria-hidden="true"></span>
+            </div>
             <button type="button" onClick={() => setShowApexOverlay(false)}>
               Continue Adventure
             </button>
